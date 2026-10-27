@@ -8,27 +8,18 @@ class SLL:
     def __init__(self):
         self.head = None
 
-    def insert(self, data, position):
+    def insert(self, data):
         new_node = Node(data)
 
-        if position == 1:
-            new_node.next = self.head
+        if self.head is None:
             self.head = new_node
             return
 
         temp = self.head
 
-        for i in range(1, position - 1):
-            if temp is None:
-                print("Invalid position!")
-                return
+        while temp.next is not None:
             temp = temp.next
 
-        if temp is None:
-            print("Invalid position!")
-            return
-
-        new_node.next = temp.next
         temp.next = new_node
 
     def display(self):
@@ -55,9 +46,8 @@ while True:
 
         case 1:
             data = int(input("Enter data: "))
-            position = int(input("Enter position where you want to insert: "))
-
-            l1.insert(data, position)
+            l1.insert(data)
+            print("Node inserted successfully.")
 
         case 2:
             l1.display()
